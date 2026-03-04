@@ -27,7 +27,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest -q
+          python -m pytest -q
 
       - name: Log in to GHCR
         if: github.ref == 'refs/heads/main'
