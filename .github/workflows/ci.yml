@@ -42,10 +42,6 @@ jobs:
       - name: Build and push image
         if: github.ref == 'refs/heads/main'
         run: |
-          OWNER_LC=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')
-          REPO_LC=$(echo '${{ github.event.repository.name }}' | tr '[:upper:]' '[:lower:]')
-          IMAGE="ghcr.io/${OWNER_LC}/${REPO_LC}:latest"
-
-          echo "Using image: $IMAGE"
+          IMAGE="ghcr.io/${{ github.repository }}:latest"
           docker build -t "$IMAGE" .
           docker push "$IMAGE"
